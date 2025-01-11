@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMU/JMI Entrance Material - Topperwala</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>AMU/JMI Entrance Material - Topperwala</h1>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#ebooks">E-books</a>
+        <a href="#mocktest">Mock Test</a>
+        <a href="#notes">Notes</a>
+        <a href="#pyq">PYQ Polytechnic Entrance</a>
+        <a href="#disclaimer">Disclaimer</a>
+    </nav>
+
+    <div id="home" class="tab-content">
+        <h2>Welcome to Topperwala</h2>
+        <p>This platform offers comprehensive resources for AMU/JMI entrance exam preparation...</p>
+    </div>
+
+    <div id="ebooks" class="tab-content" style="display:none;">
+        <h2>E-Books</h2>
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Class</th>
+                <th>Author</th>
+                <th>Download Link</th>
+            </tr>
+            <tr>
+                <td>Physics</td>
+                <td>9th</td>
+                <td>Lakhmir Singh & Manjit Kaur</td>
+                <td><a href="https://drive.google.com/drive/folders/1Q41aTgdiRMnkAAYnB5-X_BYvdk7UuudG" target="_blank">Google Drive</a></td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </table>
+    </div>
+
+    <div id="mocktest" class="tab-content" style="display:none;">
+        <h2>Mock Test</h2>
+        <form id="mockTestForm">
+            <div class="question">
+                <p>1. An object is thrown vertically upwards with a speed of 20 m/s. What is the maximum height reached by the object?</p>
+                <label><input type="radio" name="q1" value="a"> 20 m</label>
+                <label><input type="radio" name="q1" value="b"> 40 m</label>
+                <label><input type="radio" name="q1" value="c"> 10 m</label>
+                <label><input type="radio" name="q1" value="d"> 80 m</label>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitMockTest()">Submit Test</button>
+        </form>
+        <div id="result" style="display:none;"></div>
+    </div>
+
+    <div id="notes" class="tab-content" style="display:none;">
+        <h2>Notes</h2>
+        <p>Notes will be available soon. Stay tuned!</p>
+    </div>
+
+    <div id="pyq" class="tab-content" style="display:none;">
+        <h2>PYQ Polytechnic Entrance</h2>
+        <table>
+            <tr>
+                <th>Examination</th>
+                <th>Year</th>
+                <th>Download Link</th>
+            </tr>
+            <tr>
+                <td>JMI University Polytechnic</td>
+                <td>2021</td>
+                <td><a href="https://drive.google.com/drive/folders/1Brb3K6BuPmBoh_okQrClwq9BHJ5qeA0o?usp=sharing" target="_blank">Download</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="disclaimer" class="tab-content" style="display:none;">
+        <h2>Disclaimer</h2>
+        <p>The materials provided on this website are for educational purposes only...</p>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Topperwala, XYZ. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.style.display = 'none');
+            document.getElementById(tabName).style.display = 'block';
+        }
+
+        function submitMockTest() {
+            const answers = {
+                q1: 'b', // Assuming the correct answer for question 1
+            };
+
+            let score = 0;
+            let totalQuestions = Object.keys(answers).length;
+            let penalty = 0.25;
+
+            for (let [key, value] of Object.entries(answers)) {
+                const selected = document.querySelector(`input[name="${key}"]:checked`);
+                if (selected) {
+                    if (selected.value === value) {
+                        score += 1;
+                    } else {
+                        score -= penalty;
+                    }
+                }
+            }
+
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('result').innerHTML = `<h3>Your Score: ${score.toFixed(2)} / ${totalQuestions}</h3>`;
+        }
+    </script>
+</body>
+</html>
